@@ -1,5 +1,7 @@
 namespace AnalisadorLexico
-{
+{/// <summary>
+/// ////PROBLEMA COM A EXPRESSÃO (4/3)
+/// </summary>
     public partial class Inicio : Form
     {
         char[] simbolos = { '(', ')', '{', '}', ',', ';', '[', ']' };
@@ -79,106 +81,146 @@ namespace AnalisadorLexico
 
             foreach (char item in Aux)
             {
-                //if (item != ' ')
-                //{ 
-                    if (cenario == '.')
+                if (AuxCaractere != "")
+                {
+                    if (!Caractere(item) || Operador(cenario))
                     {
-                        if (Numero(item))
+                        if (cenario != ' ')
                         {
-                            Aux1 += cenario;
-                            cenario = ' ';///numero float
+                            if (Caractere(cenario))
+                            {
+                                AuxCaractere += cenario;
+                                cenario = ' ';
+                            }
                         }
-                        else if (Caractere(item))
+                        if (Keys(AuxCaractere))
                         {
-                            token.Add("ID" + (i++).ToString(), Aux1.ToString());
-                            token.Add((i++).ToString(), cenario.ToString());///ponto de função
-                            cenario = ' ';
-                            Aux1 = " ";
-                        }
-                    }
-                    if (Operador(cenario))
-                    {
-                        if (Operador(item))
-                        {
-                            token.Add("Oper" + (i++).ToString(), cenario.ToString() + item.ToString());
-                            cenario = ' ';
-                            Aux1 = "";
+                            token.Add("Key" + (i++), AuxCaractere);
+                            AuxCaractere = "";
                         }
                         else
                         {
-                            token.Add("Oper" + (i++).ToString(), cenario.ToString());
+                            token.Add("Id" + (i++).ToString(), AuxCaractere);
+                            AuxCaractere = "";
+                        }
+                    }
+                }
+                if (AuxNumero != "")
+                {
+                    if (!Numero(item))
+                    {
+                        if (Operador(cenario))
+                        {
+                            token.Add("numero" + (i++).ToString(), AuxNumero);
+                            AuxNumero = "";
+                        }
+                        else if (cenario != ' ')
+                        {
+                            if (Numero(cenario))
+                            {
+                                AuxNumero += cenario.ToString();
+                                cenario = ' ';
+                            }
+                        }
+                        else
+                        {
+                            token.Add("numero" + (i++).ToString(), AuxNumero);
+                            AuxNumero = "";
                             cenario = ' ';
-                            Aux1 = "";
                         }
                     }
-                    if (Numero(cenario))
+                }
+                if (cenario == '.')
+                {
+                    if (Numero(item))
                     {
-                        AuxNumero += cenario.ToString();
-                        //cenario = ' ';  
-                    }
-                    if (Simbolo(item))
-                    {
-                        if (Aux1 == "")
-                        {
-                            token.Add("simbol" + (i++).ToString(), item.ToString());
-                            Aux1 = "";//simbolo                            
-                        }
-                        else if (Aux1 != "")
-                        {
-                            token.Add((i++).ToString(), Aux1);
-                            Aux1 = "";
-                            token.Add((i++).ToString(), item.ToString());
-
-                        }
-                    }
-                    else if (Operador(item))
-                    {
-                        if (Aux1 == "")
-                        {
-                            // token.Add("oper"+(i++).ToString(), item.ToString());
-                            //Aux1 = "";
-                            if (cenario == ' ')
-                                cenario = item;
-                        }
-                        //else if (Aux1 != "")
-                        //{
-                        //    token.Add((i++).ToString(), Aux1);
-                        //    Aux1 = "";
-                        //    token.Add((i++).ToString(), item.ToString());
-                        //}
+                        Aux1 += cenario;
+                        cenario = ' ';///numero float
                     }
                     else if (Caractere(item))
                     {
-                        if (item == '.')
-                            cenario = item;
-                        else
-                            Aux1 += item.ToString();
-                        if (Keys(Aux1))
-                        {
-                            token.Add("Key" + (i++), Aux1);
-                            Aux1 = "";
-                        }
-                    }
-                    else if (Numero(item))
-                    {
-                        if (cenario == ' ' || Numero(cenario))
-                            cenario = item;
-                    }
-                    if ((AuxNumero != "") && (!Numero(item)))
-                    {
-                        token.Add("numero" + (i++).ToString(), AuxNumero);
-                        AuxNumero = "";
+                        token.Add("ID" + (i++).ToString(), Aux1.ToString());
+                        token.Add((i++).ToString(), cenario.ToString());///ponto de função
                         cenario = ' ';
+                        Aux1 = " ";
                     }
-                    //else
-                    //{
-                   //     if (Aux1 != "")
-                   //     {
-                   //         token.Add((i++).ToString(), Aux1);
-                   //         Aux1 = "";
-                   //     }
-                   //}
-                //}
+                }
+                if (Numero(cenario))
+                {
+                    AuxNumero += cenario.ToString();
+                    cenario = ' ';
+                }
+                if (Operador(cenario))
+                {
+                    if (Operador(item))
+                    {
+                        token.Add("Oper" + (i++).ToString(), cenario.ToString() + item.ToString());
+                        cenario = ' ';
+                        Aux1 = item.ToString();
+                    }
+                    else
+                    {
+                        token.Add("Oper" + (i++).ToString(), cenario.ToString());
+                        cenario = ' ';
+                        Aux1 = "";
+                    }
+                }
+                if (Caractere(cenario))
+                {
+                    AuxCaractere += cenario.ToString();
+                    cenario = ' ';
+                }
+                if (Simbolo(item))
+                {
+                    if (AuxNumero != "")//Aux1
+                    {
+                        token.Add("number" + (i++).ToString(), AuxNumero.ToString());
+                        token.Add("simbol" + (i++).ToString(), item.ToString());
+                        AuxNumero = "";
+                    }
+                    else if (AuxCaractere != "")
+                    {
+                        //////
+                        ///
+                        if (Keys(AuxCaractere))
+                            token.Add("Key" + (i++).ToString(), AuxCaractere.ToString());
+                        else
+                            token.Add("ID" + (i++).ToString(), AuxCaractere.ToString());
+
+                        token.Add("simbol" + (i++).ToString(), AuxCaractere.ToString());
+                        AuxCaractere = "";
+                        //////
+                    }
+                    else
+                    {
+                        token.Add("simbol" + (i++).ToString(), item.ToString());
+                    }
+
+                }
+                else if (Operador(item))
+                {
+                    if (Aux1 == "")
+                    {
+                        if (cenario == ' ')
+                            cenario = item;
+                    }
+                    else
+                        Aux1 = "";
+                }
+                else if (Caractere(item))
+                {
+                    if (item == '.')
+                        cenario = item;
+                    else if (cenario == ' ' || Caractere(cenario))
+                    {
+                        cenario = item;
+                    }
+                }
+                else if (Numero(item))
+                {
+                    if (cenario == ' ' || Numero(cenario))
+                        cenario = item;
+                }
             }
             foreach (var item in token)
             {
