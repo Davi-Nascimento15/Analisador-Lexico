@@ -31,12 +31,17 @@
             this.txt_InserirCodigo = new System.Windows.Forms.Button();
             this.txt_LerCodigo = new System.Windows.Forms.Button();
             this.R_text = new System.Windows.Forms.RichTextBox();
-            this.R_Text1 = new System.Windows.Forms.RichTextBox();
+            this.Rich_Text_Lexema = new System.Windows.Forms.RichTextBox();
+            this.Rick_Text_Tokens = new System.Windows.Forms.RichTextBox();
+            this.Rick_Text_Simbolos = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_InserirCodigo
             // 
-            this.txt_InserirCodigo.Location = new System.Drawing.Point(51, 107);
+            this.txt_InserirCodigo.Location = new System.Drawing.Point(342, 25);
             this.txt_InserirCodigo.Name = "txt_InserirCodigo";
             this.txt_InserirCodigo.Size = new System.Drawing.Size(97, 63);
             this.txt_InserirCodigo.TabIndex = 0;
@@ -46,7 +51,7 @@
             // 
             // txt_LerCodigo
             // 
-            this.txt_LerCodigo.Location = new System.Drawing.Point(51, 207);
+            this.txt_LerCodigo.Location = new System.Drawing.Point(29, 35);
             this.txt_LerCodigo.Name = "txt_LerCodigo";
             this.txt_LerCodigo.Size = new System.Drawing.Size(92, 53);
             this.txt_LerCodigo.TabIndex = 1;
@@ -56,32 +61,81 @@
             // 
             // R_text
             // 
-            this.R_text.Location = new System.Drawing.Point(475, 25);
+            this.R_text.Location = new System.Drawing.Point(492, 35);
             this.R_text.Name = "R_text";
             this.R_text.Size = new System.Drawing.Size(296, 364);
             this.R_text.TabIndex = 2;
             this.R_text.Text = "";
             // 
-            // R_Text1
+            // Rich_Text_Lexema
             // 
-            this.R_Text1.Location = new System.Drawing.Point(148, 276);
-            this.R_Text1.Name = "R_Text1";
-            this.R_Text1.Size = new System.Drawing.Size(218, 149);
-            this.R_Text1.TabIndex = 3;
-            this.R_Text1.Text = "";
+            this.Rich_Text_Lexema.Location = new System.Drawing.Point(29, 250);
+            this.Rich_Text_Lexema.Name = "Rich_Text_Lexema";
+            this.Rich_Text_Lexema.Size = new System.Drawing.Size(143, 149);
+            this.Rich_Text_Lexema.TabIndex = 3;
+            this.Rich_Text_Lexema.Text = "";
+            // 
+            // Rick_Text_Tokens
+            // 
+            this.Rick_Text_Tokens.Location = new System.Drawing.Point(176, 250);
+            this.Rick_Text_Tokens.Name = "Rick_Text_Tokens";
+            this.Rick_Text_Tokens.Size = new System.Drawing.Size(143, 149);
+            this.Rick_Text_Tokens.TabIndex = 4;
+            this.Rick_Text_Tokens.Text = "";
+            // 
+            // Rick_Text_Simbolos
+            // 
+            this.Rick_Text_Simbolos.Location = new System.Drawing.Point(325, 250);
+            this.Rick_Text_Simbolos.Name = "Rick_Text_Simbolos";
+            this.Rick_Text_Simbolos.Size = new System.Drawing.Size(143, 149);
+            this.Rick_Text_Simbolos.TabIndex = 5;
+            this.Rick_Text_Simbolos.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Lexema";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(189, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Tokens";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(331, 232);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Tabela de Simbolos";
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.R_Text1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Rick_Text_Simbolos);
+            this.Controls.Add(this.Rick_Text_Tokens);
+            this.Controls.Add(this.Rich_Text_Lexema);
             this.Controls.Add(this.R_text);
             this.Controls.Add(this.txt_LerCodigo);
             this.Controls.Add(this.txt_InserirCodigo);
             this.Name = "Inicio";
             this.Text = "Inicio";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -90,6 +144,11 @@
         private Button txt_InserirCodigo;
         private Button txt_LerCodigo;
         private RichTextBox R_text;
-        private RichTextBox R_Text1;
+        private RichTextBox Rich_Text_Lexema;
+        private RichTextBox Rick_Text_Tokens;
+        private RichTextBox Rick_Text_Simbolos;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
