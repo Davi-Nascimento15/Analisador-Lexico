@@ -10,12 +10,16 @@ namespace AnalisadorLexico
     {
         string atributo;
         string valor;
-        Token()
+        public Token()
         {
             atributo = "";
             valor = "";
         }
-
+        public Token(string at,string vl)
+        {
+            atributo = at;
+            valor = vl;
+        }
         public string AtributoGet { get { return atributo; } }
         public string AtributoSet { set { atributo = value; } }
         public string ValorGet { get { return valor; } }
